@@ -22,7 +22,7 @@ int ExtEuclid(int a, int b) {
 	
 	while (b != 0) {
 		c = a%b;
-		quot = getAbsolute(a/b);
+		quot = a/b;
 		a = b;
 		b = c;
 		r_tmp = r;
