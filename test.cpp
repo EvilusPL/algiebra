@@ -5,22 +5,27 @@ using namespace std;
 
 int main() {
 	int x;
+	int y;
 	int** a;
 	int** b;
 	int** c;
 	int** d;
 	x = gcd(123,456);
+	y = gcdExt(123,456);
 	a = getAddModTable(5);
 	b = getSubModTable(5);
 	c = getMulModTable(5);
 	d = getDivModTable(5);
 	cout << "sizeof(x) = " << sizeof(x) << endl;
+	cout << "sizeof(y) = " << sizeof(y) << endl;
 	cout << "sizeof(a) = " << sizeof(a) << endl;
 	cout << "sizeof(b) = " << sizeof(a) << endl;
 	cout << "sizeof(c) = " << sizeof(a) << endl;
 	cout << "sizeof(d) = " << sizeof(a) << endl;
 	cout << endl;
 	cout << x << endl;
+	cout << endl;
+	cout << y << endl;
 	cout << endl;
 	printTable(a, 5);
 	cout << endl;

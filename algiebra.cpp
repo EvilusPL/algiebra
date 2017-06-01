@@ -14,6 +14,27 @@ int getAbsolute(int a) {
 	return a;
 }
 
+int ExtEuclid(int a, int b) {
+	int a0 = a, b0 = b;
+	int p = 1, q = 0;
+	int r = 0, s = 1;
+	int c, quot, r_tmp, s_tmp;
+	
+	while (b != 0) {
+		c = a%b;
+		quot = getAbsolute(a/b);
+		a = b;
+		b = c;
+		r_tmp = r;
+		s_tmp = s;
+		r = p - quot * r;
+		s = q - quot * s;
+		p = r_tmp;
+		q = s_tmp;
+	}
+	return p*a0+q*b0;
+}
+
 int Euclid(int a, int b) {
 	int x = 1;
 	while ((a%b)!=0) {
@@ -22,6 +43,33 @@ int Euclid(int a, int b) {
 		b=x;	
 	}
 	return x;
+}
+
+int gcdExt(int a, int b) {
+	if (a<0) {
+		a = getAbsolute(a);
+	}
+	if (b<0) {
+		b = getAbsolute(b);
+	}
+	if (b == 0) {
+		return getAbsolute(a);
+	}
+	if (a == 0) {
+		return getAbsolute(b);
+	}
+	if (b%a == 0) {
+		return getAbsolute(a);
+	}
+	if (a%b == 0) {
+		return getAbsolute(b);
+	}
+	if (a>b) {
+		int x=b;
+		b=a;
+		a=x;
+	}
+	return ExtEuclid(a,b);
 }
 
 int gcd(int a, int b) {

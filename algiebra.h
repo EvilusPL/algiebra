@@ -5,7 +5,9 @@
 #define _ALGIEBRA_H_
 
 int getAbsolute(int a);
+int ExtEuclid(int a, int b);
 int Euclid(int a, int b);
+int gcdExt(int a, int b);
 int gcd(int a, int b);
 int** getAddModTable(int a);
 int** getSubModTable(int a);
