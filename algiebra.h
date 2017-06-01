@@ -7,5 +7,11 @@
 int getAbsolute(int a);
 int Euclid(int a, int b);
 int gcd(int a, int b);
+int** getAddModTable(int a);
+int** getSubModTable(int a);
+int** getMulModTable(int a);
+int** getDivModTable(int a);
+void printTable(int** t, int c);
+void removeTable(int** t, int c);
 
 #endif
