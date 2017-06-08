@@ -186,7 +186,6 @@ void printTable(int** t, int c) {
 			printString("        ");
 		}
 		printNewLine();
-		printf("\n");
 	}	
 }
 
