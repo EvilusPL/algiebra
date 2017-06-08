@@ -5,6 +5,21 @@
 #include <cstdlib>
 #include "algiebra.h"
 
+int* Div(int n, int m) {
+	int q,r;
+	static int out[2];
+	
+	q=0;
+	r=n;
+	while(r>=m) {
+		q=q+1;
+		r=r-m;
+	}
+	out[0]=q;
+	out[1]=r;
+	return out;
+}
+
 int getAbsolute(int a) {
 	if (a<0)
 	{
@@ -14,15 +29,15 @@ int getAbsolute(int a) {
 	return a;
 }
 
-int ExtEuclid(int a, int b) {
+int* ExtEuclid(int a, int b) {
 	int a0 = a, b0 = b;
 	int p = 1, q = 0;
 	int r = 0, s = 1;
 	int c, quot, r_tmp, s_tmp;
-	
+	static int out[3];
 	while (b != 0) {
-		c = a%b;
-		quot = a/b;
+		c = Div(a,b)[1];
+		quot = Div(a,b)[0];
 		a = b;
 		b = c;
 		r_tmp = r;
@@ -32,13 +47,16 @@ int ExtEuclid(int a, int b) {
 		p = r_tmp;
 		q = s_tmp;
 	}
-	return p*a0+q*b0;
+	out[0]=p*a0+q*b0;
+	out[1]=p;
+	out[2]=q;
+	return out;
 }
 
 int Euclid(int a, int b) {
 	int x = 1;
-	while ((a%b)!=0) {
-		x=a%b;
+	while ((Div(a,b)[1])!=0) {
+		x=Div(a,b)[1];
 		a=b;
 		b=x;	
 	}
@@ -69,7 +87,7 @@ int gcdExt(int a, int b) {
 		b=a;
 		a=x;
 	}
-	return ExtEuclid(a,b);
+	return ExtEuclid(a,b)[0];
 }
 
 int gcd(int a, int b) {
@@ -107,7 +125,7 @@ int** getAddModTable(int a) {
 	for (int i = 0; i < a; i++) {
 		addTable[i] = new int[a];
 		for (int j =  0; j < a; j++) {
-			addTable[i][j] = (i+j)%a;
+			addTable[i][j] = Div(i+j, a)[1];
 		}
 	}
 	return addTable;
@@ -121,7 +139,7 @@ int** getSubModTable(int a) {
 	for (int i = 0; i < a; i++) {
 		subTable[i] = new int[a];
 		for (int j =  0; j < a; j++) {
-			subTable[i][j] = (i-j)%a;
+			subTable[i][j] = Div(i-j, a)[1];
 		}
 	}
 	return subTable;
@@ -135,7 +153,7 @@ int** getMulModTable(int a) {
 	for (int i = 0; i < a; i++) {
 		mulTable[i] = new int[a];
 		for (int j =  0; j < a; j++) {
-			mulTable[i][j] = (i*j)%a;
+			mulTable[i][j] = Div(i*j, a)[1];
 		}
 	}
 	return mulTable;
@@ -153,7 +171,7 @@ int** getDivModTable(int a) {
 				divTable[i][j] = 0;
 			}
 			else {
-				divTable[i][j] = (i/j)%a;
+				divTable[i][j] = Div(Div(i, j)[0], a)[1];
 			}
 		}
 	}

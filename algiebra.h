@@ -4,8 +4,9 @@
 #ifndef _ALGIEBRA_H_
 #define _ALGIEBRA_H_
 
+int* Div(int n, int m);
 int getAbsolute(int a);
-int ExtEuclid(int a, int b);
+int* ExtEuclid(int a, int b);
 int Euclid(int a, int b);
 int gcdExt(int a, int b);
 int gcd(int a, int b);
