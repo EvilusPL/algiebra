@@ -16,5 +16,9 @@ int** getMulModTable(int a);
 int** getDivModTable(int a);
 void printTable(int** t, int c);
 void removeTable(int** t, int c);
+int printString(char* string);
+int printChar(char chr);
+int printInteger(int num);
+void printNewLine();
 
 #endif

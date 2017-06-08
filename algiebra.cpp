@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include "algiebra.h"
 
 int* Div(int n, int m) {
@@ -181,8 +182,10 @@ int** getDivModTable(int a) {
 void printTable(int** t, int c) {
 	for (int i = 0; i < c; i++) {
 		for (int j = 0; j < c; j++) {
-			printf("%-8.1d", t[i][j]);
+			printInteger(t[i][j]);
+			printString("        ");
 		}
+		printNewLine();
 		printf("\n");
 	}	
 }
@@ -192,4 +195,23 @@ void removeTable(int** t, int c) {
 		delete[] t[i];
 	}
 	delete[] t;
+}
+
+int printString(char* string) {
+	printf("%s", string);
+	return strlen(string);
+}
+
+int printChar(char chr) {
+	printf("%c", chr);
+	return (int)chr;
+}
+
+int printInteger(int num) {
+	printf("%d", num);
+	return num;
+}
+
+void printNewLine() {
+	printf("\n");
 }
